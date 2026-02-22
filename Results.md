@@ -260,7 +260,6 @@ Global mixing methods such as Half-Split XOR demonstrated superior entropy enhan
 <h1>SRAM + XOR Folding + Von Neumann Debiasing</h1>
 
 <h2> Experiment 6: SRAM + XOR Folding + Von Neumann Debiasing Experiment </h2>
-<p><strong>Platform:</strong> Arduino Uno (ATmega328P)</p>
 
 <hr>
 
@@ -317,6 +316,65 @@ achieved near-ideal entropy performance. However, the severe
 reduction in bit count limits practical throughput. This method
 is suitable for high-security low-rate entropy generation but may
 not be efficient for high-speed applications.
+</p>
+
+<hr>
+
+<h2>XOR Folding (Block size = 2) + Von Neumann Debiasing</h2>
+
+
+<h2>Statistical Results</h2>
+
+<table>
+<tr>
+    <th>Metric</th>
+    <th>Value</th>
+</tr>
+<tr>
+    <td>Total Bits</td>
+    <td>69</td>
+</tr>
+<tr>
+    <td>Ones</td>
+    <td>28</td>
+</tr>
+<tr>
+    <td>Zeros</td>
+    <td>41</td>
+</tr>
+<tr>
+    <td>P(1)</td>
+    <td>0.405797</td>
+</tr>
+<tr>
+    <td>P(0)</td>
+    <td>0.594203</td>
+</tr>
+<tr class="highlight">
+    <td>Shannon Entropy</td>
+    <td>0.974241</td>
+</tr>
+</table>
+
+<hr>
+
+<h2>Analysis</h2>
+<ul>
+<li>Entropy increased significantly compared to XOR(2) alone.</li>
+<li>Von Neumann correction improved probability balance.</li>
+<li>Bit count reduced due to pair filtering.</li>
+<li>Entropy is high (0.974), close to ideal randomness.</li>
+</ul>
+
+<hr>
+
+<h2>Conclusion</h2>
+<p>
+The combined XOR(2) and Von Neumann conditioning pipeline
+achieves strong entropy improvement while maintaining a moderate
+bit rate (69 bits). This method provides a better balance between
+entropy quality and throughput compared to aggressive conditioning
+approaches.
 </p>
 
 
