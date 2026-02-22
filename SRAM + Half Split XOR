@@ -1,0 +1,89 @@
+/*
+  SRAM + Half-Split XOR Experiment
+  + Bit Frequency Measurement
+  + Shannon Entropy Calculation
+
+  Board: Arduino Uno (ATmega328P)
+*/
+
+#include <Arduino.h>
+#include <math.h>
+
+#define SRAM_START 0x0100
+#define SRAM_READ_SIZE 128   // Must be even
+
+void setup() {
+
+  Serial.begin(9600);
+  delay(2000);
+
+  Serial.println("=== SRAM + HALF-SPLIT XOR ===");
+  Serial.println("--------------------------------");
+
+  uint8_t *sram_ptr = (uint8_t*)SRAM_START;
+
+  unsigned long totalBits = 0;
+  unsigned long onesCount = 0;
+  unsigned long zerosCount = 0;
+
+  Serial.println("Half-Split XOR Bit Stream:");
+
+  int half = SRAM_READ_SIZE / 2;
+
+  for (int i = 0; i < half; i++) {
+
+    uint8_t foldedByte = sram_ptr[i] ^ sram_ptr[i + half];
+
+    for (int bit = 7; bit >= 0; bit--) {
+
+      uint8_t bitVal = (foldedByte >> bit) & 1;
+
+      Serial.print(bitVal);
+
+      totalBits++;
+
+      if (bitVal == 1)
+        onesCount++;
+      else
+        zerosCount++;
+    }
+  }
+
+  Serial.println();
+  Serial.println("--------------------------------");
+
+  float p1 = (float)onesCount / totalBits;
+  float p0 = (float)zerosCount / totalBits;
+
+  float entropy = 0;
+
+  if (p1 > 0)
+    entropy -= p1 * (log(p1) / log(2));
+
+  if (p0 > 0)
+    entropy -= p0 * (log(p0) / log(2));
+
+  Serial.println("STATISTICS (Half-Split XOR):");
+  Serial.print("Total Bits: ");
+  Serial.println(totalBits);
+
+  Serial.print("Ones: ");
+  Serial.println(onesCount);
+
+  Serial.print("Zeros: ");
+  Serial.println(zerosCount);
+
+  Serial.print("P(1): ");
+  Serial.println(p1, 6);
+
+  Serial.print("P(0): ");
+  Serial.println(p0, 6);
+
+  Serial.print("Entropy: ");
+  Serial.println(entropy, 6);
+
+  Serial.println("--------------------------------");
+  Serial.println("Power OFF fully to regenerate SRAM state.");
+}
+
+void loop() {}
