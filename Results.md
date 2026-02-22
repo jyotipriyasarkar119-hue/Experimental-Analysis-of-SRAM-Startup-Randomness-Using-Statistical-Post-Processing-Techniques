@@ -4,7 +4,7 @@
 <h2>Experiment 1: SRAM Random Bit Generation </h2>
 <hr>
 
-<h2>Statistical Analysis</h2>
+<h3>Statistical Analysis</h3>
 
 <table>
     <tr>
@@ -39,7 +39,7 @@
 
 <hr>
 
-<h2>Interpretation</h2>
+<h3>Interpretation</h3>
 <ul>
     <li>The bit distribution shows a bias toward 0.</li>
     <li>Entropy is close to 1, indicating strong randomness.</li>
@@ -48,7 +48,7 @@
 
 <hr>
 
-<h2>Observations</h2>
+<h3>Observations</h3>
 
 <ul>
     <li>Output remains consistent across boots (indicating stable SRAM regions).</li>
@@ -58,11 +58,8 @@
 
 <hr>
 
-<h2>SRAM XOR Folding Experimental Results</h2>
+<h1>SRAM XOR Folding Experimental Results</h1>
 
-
-
-<h3>Statistical Analysis</h3>
 
 <hr>
 
@@ -150,7 +147,7 @@
 
 <hr>
 
-<h2>Comparative Summary</h2>
+<h3>Comparative Summary</h3>
 
 <table>
 <tr>
@@ -181,7 +178,7 @@
 
 <hr>
 
-<h2>Analysis</h2>
+<h3>Analysis</h3>
 <ul>
     <li>Local XOR folding (Block 8 and Block 2) amplified spatial bias in SRAM.</li>
     <li>Reducing block size did not improve entropy.</li>
@@ -191,7 +188,7 @@
 
 <hr>
 
-<h2>Conclusion</h2>
+<h3>Conclusion</h3>
 <p>
 The Half-Split XOR method demonstrated superior entropy performance compared to local XOR folding techniques.
 This indicates strong spatial bias in SRAM startup patterns, and global mixing strategies are more effective
