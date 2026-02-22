@@ -1,5 +1,5 @@
 
-<h1>SRAM Startup Randomness Analysis</h1>
+<h1>SRAM Experimental Results</h1>
 
 <h2>Experiment 1: SRAM Random Bit Generation </h2>
 <hr>
@@ -194,4 +194,65 @@ The Half-Split XOR method demonstrated superior entropy performance compared to 
 This indicates strong spatial bias in SRAM startup patterns, and global mixing strategies are more effective
 for entropy enhancement in embedded systems.
 </p>
+
+<hr>
+
+<h1> SRAM and Von Neumann Debiasing Experimental Results </h1>
+
+
+<h2>Experiment5: Von Neumann Debiasing </h2>
+
+
+<h2>Statistical Results</h2>
+
+<table>
+<tr>
+    <th>Metric</th>
+    <th>Value</th>
+</tr>
+<tr>
+    <td>Total Bits</td>
+    <td>244</td>
+</tr>
+<tr>
+    <td>Ones</td>
+    <td>96</td>
+</tr>
+<tr>
+    <td>Zeros</td>
+    <td>148</td>
+</tr>
+<tr>
+    <td>P(1)</td>
+    <td>0.393443</td>
+</tr>
+<tr>
+    <td>P(0)</td>
+    <td>0.606557</td>
+</tr>
+<tr class="highlight">
+    <td>Shannon Entropy</td>
+    <td>0.966985</td>
+</tr>
+</table>
+
+<hr>
+
+<h2>Interpretation</h2>
+<ul>
+    <li>The Von Neumann method reduced the total bit count due to pair filtering.</li>
+    <li>Probability imbalance remained similar to raw SRAM output.</li>
+    <li>Entropy remained high (~0.967) but did not significantly exceed raw entropy.</li>
+    <li>This indicates the presence of structural (spatial) bias in SRAM startup.</li>
+</ul>
+
+<hr>
+
+<h2>Conclusion</h2>
+<p>
+The Von Neumann debiasing technique did not significantly improve entropy compared to raw SRAM output.
+This suggests that the observed bias is spatially correlated rather than purely probabilistic.
+Global mixing methods such as Half-Split XOR demonstrated superior entropy enhancement.
+</p>
+
 
